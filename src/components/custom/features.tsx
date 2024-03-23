@@ -2,32 +2,25 @@ import Icon from '../ui/icon';
 
 const functionalitiesData = [
 	{
-		icon: 'ticket' as const,
-		title: 'Cupons de desconto nos seus comercios favoritos',
-		description:
-			'Com seus TourCoins você pode trocar por cupons de desconto em seus comercios favoritos.'
+		icon: 'ticket-percent' as const,
+		title: 'Exclusive Perks',
+		description: 'Unlock discounts at top restaurants and cultural hotspots'
 	},
 	{
-		icon: 'images' as const,
-		title: 'Album de NFTs',
-		description: 'Com a TourCoin você pode colecionar NFTs de cada viagem realizada.'
+		icon: 'file-image' as const,
+		title: 'Unique Collectibles',
+		description: 'Turn real-life adventures into one-of-a-kind NFT artworks'
 	},
 	{
-		icon: 'qr-code' as const,
-		title: 'Scan por QRcode',
-		description: 'Você pode escanear QRcodes para ganhar TourCoins.'
-	},
-	{
-		icon: 'map' as const,
-		title: 'Mapa',
-		description:
-			'Veja no mapa os pontos turisticos e comercios parceiros que aceitam TourCoins.'
+		icon: 'store' as const,
+		title: 'Enhanced Engagement',
+		description: 'Boost customer interaction for local businesses'
 	}
 ];
 
 export default function Features() {
 	return (
-		<div className="grid md:grid-cols-2 items-start w-full max-w-6xl mx-auto px-4 py-6 gap-6 md:gap-8">
+		<div className="grid md:grid-cols-3 items-start w-full max-w-6xl mx-auto px-4 py-6 gap-6 md:gap-16">
 			{functionalitiesData.map((data, index) => (
 				<div key={index} className="flex items-start gap-4">
 					<Icon name={data.icon} size={40} />

@@ -12,32 +12,28 @@ export default function Home() {
 		<>
 			<Navbar />
 			<Section id="hero">
-				<Section.Title>Ganhe NFTs por viajar!</Section.Title>
+				<Section.Title>Explore the World, Collect Memories with NFTur!</Section.Title>
 				<Section.Subtitle>
-					Com a <strong>TourCoin</strong> você ganha NFTs a cada viagem realizada.
+					Transform your travels into unforgettable experiences.
 				</Section.Subtitle>
 				<div className="my-4 flex gap-x-4 justify-center">
-					<Button>Cadastre-se como usuario</Button>
-					<Button>Cadastre-se como empresa</Button>
+					<Button>Join NFTur Now</Button>
 				</div>
 			</Section>
 			<Section id="about">
-				<Section.Title>Sobre nos</Section.Title>
-				<Section.Subtitle>
-					<About />
-				</Section.Subtitle>
+				<Section.Title>About us</Section.Title>
+				<About />
 			</Section>
 			<Section id="steps">
-				<Section.Title>Como funciona?</Section.Title>
-				<Section.Subtitle>
-					<Steps />
-				</Section.Subtitle>
+				<Section.Title>How NFTur Works</Section.Title>
+				<Steps />
 			</Section>
 			<Section id="features">
-				<Section.Title>Funcionalidades</Section.Title>
+				<Section.Title>Why Choose NFTur?</Section.Title>
 				<Features />
 			</Section>
 			<Section id="faq">
+				<Section.Title>Frequently Asked Questions</Section.Title>
 				<FAQ />
 			</Section>
 			<Section id="contact">
