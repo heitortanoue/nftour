@@ -36,9 +36,7 @@ export default function Home() {
 				<Section.Title>Frequently Asked Questions</Section.Title>
 				<FAQ />
 			</Section>
-			<Section id="contact">
-				<Footer />
-			</Section>
+			<Footer />
 		</>
 	);
 }
