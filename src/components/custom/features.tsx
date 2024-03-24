@@ -23,10 +23,10 @@ export default function Features() {
 		<div className="grid md:grid-cols-3 items-start w-full max-w-6xl mx-auto px-4 py-6 gap-6 md:gap-16">
 			{functionalitiesData.map((data, index) => (
 				<div key={index} className="flex items-start gap-4">
-					<Icon name={data.icon} size={40} />
+					<Icon className="text-indigo-500" name={data.icon} size={70} />
 					<div className="grid gap-1.5">
-						<h3 className="text-lg font-semibold tracking-tight">{data.title}</h3>
-						<p className="text-sm leading-none text-gray-500 dark:text-gray-400">
+						<h3 className="text-xl font-semibold tracking-tight">{data.title}</h3>
+						<p className="text-lg leading-none text-gray-700 dark:text-gray-400">
 							{data.description}
 						</p>
 					</div>

@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import Icon from '../ui/icon';
 
 const socialMediaData = [
@@ -54,7 +55,7 @@ const links = [
 
 export default function Footer() {
 	return (
-		<footer className={`w-full text-xs bg-zinc-950 py-20 px-4`}>
+		<footer className={`w-full text-xs bg-indigo-500 py-20 px-4`}>
 			<div
 				className="max-w-normal mx-auto text-white text-center items-center lg:items-start lg:text-left
 				flex flex-col lg:flex-row gap-10"
@@ -63,7 +64,13 @@ export default function Footer() {
 					className="flex flex-col lg:justify-between items-center lg:items-start gap-8 flex-shrink-0 w-1/3
 						order-2 lg:order-1"
 				>
-					{/* <Image src={logoBranca} alt="Logo" width={200} /> */}
+					<Image
+						src={'/logos/text.png'}
+						width={695 * 0.25}
+						height={100 * 0.25}
+						priority
+						alt="logo"
+					/>
 					<div className="text-xxs text-gray-dark">2024 © NFTour - 🇧🇷</div>
 				</div>
 				<div className="grid md:grid-cols-3 gap-10 flex-1 order-1 lg:order-2">

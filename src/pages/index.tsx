@@ -27,7 +27,7 @@ export default function Layout() {
 								<Section.Title>About us</Section.Title>
 								<About />
 							</Section>
-							<Section colors={{ bg: 'black', text: 'white' }} id="steps">
+							<Section colors={{ bg: 'indigo-500', text: 'white' }} id="steps">
 								<Section.Title>How NFTour Works</Section.Title>
 								<Steps />
 							</Section>
@@ -91,7 +91,7 @@ function Hero() {
                         md:w-fit max-w-sm md:max-w-none
                         animate-enter-from-bottom-after"
 						>
-							<Button className="w-full" size="lg">
+							<Button className="w-full bg-indigo-500" size="lg">
 								<Link href={ROUTES.APP}>Start exploring now</Link>
 							</Button>
 							{/* <div

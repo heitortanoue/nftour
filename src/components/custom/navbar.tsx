@@ -12,7 +12,7 @@ const defaultSections = [
 		href: '#steps'
 	},
 	{
-		title: 'Funcionalities',
+		title: 'Features',
 		href: '#features'
 	},
 	{
