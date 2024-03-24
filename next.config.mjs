@@ -6,7 +6,7 @@ const nextConfig = {
 		remotePatterns: [
 			{
 				protocol: 'https',
-				hostname: 'github.com',
+				hostname: 'i.ibb.co',
 				port: '',
 				pathname: '/**'
 			}

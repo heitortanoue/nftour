@@ -36,9 +36,29 @@ export const LOCATION_MAP: {
 
 export const NFT_MAP = [
 	{
-		name: 'NFT 1',
-		image: 'https://i.ibb.co/HDxYY4J/DALL-E-2024-03-23-01-31-36-Design-a-cartoon-style-badge-featuring-a-character',
-		location: 'Batata de Marechal'
+		name: 'Marechal negro com chapéu de marechal segurando 2 frangos fritos em uma mão e um saco de batata frita na outra mão. Gravata e detalhe no chapéus vermelhos, e roupa branca',
+		image: 'https://i.ibb.co/MBNRbVp/Batata-de-Marechal.png',
+		location: 'Batata do Marechal'
+	},
+	{
+		name: 'Logo do evento ETHSamba Hack, dividida em 2 linhas, tendo ETH acima e Samba abaixo, com o última letra da palavra Samba substituída pela logo do Ethereum. Além disso, linhas amarelas saem de trás da escrita de forma radial',
+		image: 'https://i.ibb.co/wgcqfVT/download.jpg',
+		location: 'ETHSamba Hack'
+	},
+	{
+		name: 'Ilustração do Museu de Arte Contemporânea do Rio de Janeiro',
+		image: 'https://i.ibb.co/ChVZ29S/Oscar-Niemieyer-psd.png',
+		location: 'Museu de Arte Contemporânea do Rio de Janeiro'
+	},
+	{
+		name: 'Ilustração do Cristo Redentor',
+		image: 'https://i.ibb.co/zxH2DQH/Cristo-Redentor.png',
+		location: 'Cristo Redentor'
+	},
+	{
+		name: 'Ilustração do Theatro Municipal do Rio de Janeiro',
+		image: 'https://i.ibb.co/93FRR6z/Theatro-Municipal-do-Rio-de-Janeiro.png',
+		location: 'Theatro Municipal do Rio de Janeiro'
 	}
 ];
 
