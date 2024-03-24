@@ -7,7 +7,7 @@ import { useEndpointRequest } from '../hooks/useEndpoint';
 interface AuthContextData {
 	user: string | null;
 	isAuthenticated: boolean;
-	signIn: ({ email }: { email: string }) => Promise<{
+	signIn: ({ email, otp }: { email: string; otp: string }) => Promise<{
 		error?: string;
 		message?: string;
 	}>;
@@ -26,32 +26,13 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
 
 	const isAuthenticated = !!user;
 
-	// const shouldReloadUser = !!accessToken && !isAuthenticated;
-	// const { data: recoverUserData, isLoading: recoveringUser } = useEndpointSWR(
-	// 	'/auth/recover-user',
-	// 	undefined,
-	// 	{
-	// 		condition: shouldReloadUser
-	// 	}
-	// );
-
-	// if (recoverUserData) {
-	// 	setUser(recoverUserData);
-	// 	setLoading(false);
-	// }
-
-	// useEffect(() => {
-	// 	if (!shouldReloadUser && !recoveringUser) {
-	// 		setLoading(false);
-	// 	}
-	// }, [shouldReloadUser, recoveringUser]);
-
-	const signIn = async ({ email }: { email: string }) => {
+	const signIn = async ({ email, otp }: { email: string; otp: string }) => {
 		setLoading(true);
 		const response: { error?: string; message?: string } = {};
 
-		const loginResponse = await useEndpointRequest('/auth/login', 'POST', {
-			email
+		const loginResponse = await useEndpointRequest('/auth/verifyOTP', 'POST', {
+			email,
+			otp
 		});
 
 		const { success } = loginResponse;
@@ -62,25 +43,25 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
 			return response;
 		}
 
-		setUser(loginResponse.data);
+		setUser(email);
 		response.message = 'Login efetuado com sucesso!';
 
 		return response;
 	};
 
-	const signOut = async () => {
-		await useEndpointRequest('/auth/sign-out', undefined);
-		setUser(null);
-		router.push('/');
+	// const signOut = async () => {
+	// 	await useEndpointRequest('/auth/sign-out', undefined);
+	// 	setUser(null);
+	// 	router.push('/');
 
-		return;
-	};
+	// 	return;
+	// };
 
 	return (
 		<AuthContext.Provider
 			value={{
 				signIn,
-				signOut,
+				// signOut,
 				user,
 				isAuthenticated,
 				loading

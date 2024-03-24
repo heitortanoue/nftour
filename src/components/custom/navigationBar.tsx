@@ -18,7 +18,10 @@ export default function NavigationBar() {
 	return (
 		<div className="px-5 absolute bottom-0 w-full z-[400] mb-5 transition-colors flex items-center">
 			<CustomToogleGroup list={buttons1} />
-			<Link href={ROUTES.SCAN} className="text-3xl w-20 h-20 -mx-5 z-[1] bg-white rounded-full flex cursor-pointer">
+			<Link
+				href={ROUTES.SCAN}
+				className="shadow-md border text-3xl w-20 h-20 -mx-5 z-[1] bg-white rounded-full flex cursor-pointer"
+			>
 				<i className="fa-solid fa-qrcode m-auto" aria-hidden />
 			</Link>
 			<CustomToogleGroup list={buttons2} />
@@ -34,7 +37,7 @@ function CustomToogleGroup({ list }: { list: { value: string; icon: string; link
 			className="rounded-lg bg-zinc-700 text-white flex-1 h-fit"
 		>
 			{list.map((button) => (
-				<Link href={button.link} className="flex-1">
+				<Link href={button.link} className="flex-1" key={button.link}>
 					<ToggleGroupItem
 						key={button.value}
 						value={button.value}

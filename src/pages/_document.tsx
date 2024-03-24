@@ -5,7 +5,7 @@ export default function Document() {
 		<Html lang="pt-BR" suppressHydrationWarning>
 			<Head>
 				<link rel="apple-touch-icon" href="/logos/main.png" />
-				<link rel="icon" href="/logos/main.png" />
+				<link rel="icon" href="/logos/main.png" sizes="any" />
 				<meta name="theme-color" content="#000000" />
 
 				<meta property="og:type" content="website" />

@@ -26,8 +26,8 @@ export default function FAQ() {
 		<div key="1" className="py-12 container px-4 space-y-6 md:space-y-8">
 			<div className="space-y-2 h-60">
 				{QandA.map((qa, index) => (
-					<Collapsible
-						className="space-y-2 border border-solid border-gray-200 rounded-lg"
+                    <Collapsible
+						className="space-y-2 px-4 border border-solid border-gray-200 rounded-lg"
 						key={index}
 					>
 						<CollapsibleTrigger asChild>
@@ -37,7 +37,7 @@ export default function FAQ() {
 							</div>
 						</CollapsibleTrigger>
 						<CollapsibleContent>
-							<p className="text-sm leading-loose md:text-base/relaxed lg:text-base/relaxed xl:text-base/relaxed">
+							<p className="text-sm pb-5 leading-loose md:text-base/relaxed lg:text-base/relaxed xl:text-base/relaxed">
 								{qa.answer}
 							</p>
 						</CollapsibleContent>

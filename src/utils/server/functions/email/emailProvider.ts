@@ -1,7 +1,5 @@
 import nodemailer from 'nodemailer';
 
-import { emailTemplatePicker, type EmailTemplate } from './templatePicker';
-
 interface Email {
     subject: string;
     to: string;
@@ -15,8 +13,7 @@ export class EmailProvider {
     private constructor() {
         // Singleton
         this.transporter = nodemailer.createTransport({
-            host: 'smtp.umbler.com',
-            port: '587',
+            service: 'gmail',
             auth: {
                 user: process.env.NEXT_PUBLIC_EMAIL,
                 pass: process.env.EMAIL_PASSWORD
@@ -57,31 +54,6 @@ export class EmailProvider {
         const result = await this.transporter.sendMail(mailToSend);
 
         if (result) {
-            return true;
-        }
-
-        return false;
-    }
-
-    public async sendEmailWithTemplate(
-        templateName: EmailTemplate,
-        email: Omit<Email, 'body'>,
-        values: { [key: string]: string | number}
-    ) {
-        const template = emailTemplatePicker(templateName);
-
-        if (!template) {
-            return null;
-        }
-
-        const body = this.createDynamicEmailTemplate(template, values);
-
-        if (
-            await this.sendEmail({
-                ...email,
-                body
-            })
-        ) {
             return true;
         }
 

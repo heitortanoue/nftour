@@ -2,7 +2,8 @@ import { APIHandler, HTTPError } from '@/utils/server/handler';
 import { ethers } from 'ethers';
 import { NextApiRequest } from 'next';
 
-import ABI from '../../../../contracts/abis/Token.json';
+import TokenABI from '../../../../contracts/abis/Token.json';
+import NFTABI from '../../../../contracts/abis/NFT.json';
 import { CONTRACTS } from '@/utils/server/functions/misc/constants';
 
 export default APIHandler(
@@ -13,7 +14,8 @@ export default APIHandler(
 );
 
 async function mintToken(req: NextApiRequest) {
-	const { ammount, to } = req.body;
+	const { to, nft_url } = req.body;
+	const TOKEN_AMMOUNT = 10;
 
 	const RPCUrl = 'https://sepolia-rpc.scroll.io/';
 	const provider = new ethers.JsonRpcProvider(RPCUrl);
@@ -25,18 +27,27 @@ async function mintToken(req: NextApiRequest) {
 		return HTTPError.internalServerError('Wallet not found');
 	}
 
-	const contract = new ethers.Contract(CONTRACTS.TOKEN, ABI, walletWithProvider);
-	if (!contract) {
+	const tokenContract = new ethers.Contract(CONTRACTS.TOKEN, TokenABI, walletWithProvider);
+	const NFCContract = new ethers.Contract(CONTRACTS.NFT, NFTABI, walletWithProvider);
+	if (!tokenContract || !NFCContract) {
 		return HTTPError.internalServerError('Contract not found');
 	}
 
-	const real_amount = ammount;
+	const real_amount = TOKEN_AMMOUNT;
+
+	// NFT PART -=-=-=-=-=-=-==-=-=--
+
+	// function mint(string memory _tokenURI, address to) external returns(uint)
+	console.log('minting NFT', nft_url, to);
+	console.log(await NFCContract.mint(nft_url, to));
+
+	// TOKEN PART -=-=-=-=-=-=-==-=-=--
 
 	// function mint(uint amount) onlyOwner public
-	console.log('minting', real_amount);
-	console.log(await contract.mint(real_amount));
+	console.log('minting tokens', real_amount);
+	console.log(await tokenContract.mint(real_amount));
 
 	// function transferCoin(address to, uint256 tokenId) public
-	console.log('transfering', to, real_amount);
-	console.log(await contract.transferCoin(to, real_amount));
+	console.log('transfering tokens', to, real_amount);
+	console.log(await tokenContract.transferCoin(to, real_amount));
 }

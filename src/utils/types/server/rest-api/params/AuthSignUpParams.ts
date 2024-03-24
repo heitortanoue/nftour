@@ -6,14 +6,16 @@ const ajv = new Ajv({
 
 export type AuthSignUpParams = {
     email: string;
+    otp: string;
 };
 
 const AuthSignUpParamsSchema = {
     type: 'object',
     properties: {
         email: { type: 'string' },
+        otp: { type: 'string' }
     },
-    required: ['email'],
+    required: ['email', 'otp'],
     additionalProperties: false
 };
 

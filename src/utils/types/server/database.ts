@@ -7,3 +7,28 @@ export interface UsuarioDB {
     _updatedAt: Date;
 }
 
+export interface QRCodeDB {
+    _id: string;
+    location: string;
+
+    _createdAt: Date;
+    _updatedAt: Date;
+}
+
+export interface CouponDB {
+    _id: string;
+    code: string;
+    promotion: string;
+
+    _createdAt: Date;
+}
+
+export interface PromotionDB {
+    _id: string;
+    title: string;
+    photo: string;
+    description: string;
+    discount: number;
+
+    _createdAt: Date;
+}
