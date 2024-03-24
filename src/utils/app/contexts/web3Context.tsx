@@ -1,6 +1,7 @@
-import { createContext, FC, ReactNode, useContext } from 'react';
+import { createContext, FC, ReactNode, useContext, useEffect } from 'react';
 import useWeb3Provider, { IWeb3State } from '../hooks/useWeb3';
 import { toast } from '@/components/ui/use-toast';
+import { useRouter } from 'next/router';
 
 export interface IWeb3Context {
 	connectWallet: () => Promise<ReturnType<typeof toast> | undefined>;
@@ -16,6 +17,15 @@ type Props = {
 
 const Web3ContextProvider: FC<Props> = ({ children }) => {
 	const { connectWallet, disconnect, state } = useWeb3Provider();
+	const router = useRouter();
+
+	const tryToConnectOnLinks = ['/app/wallet', '/app/album'];
+
+	useEffect(() => {
+		if (tryToConnectOnLinks.includes(router.pathname)) {
+			connectWallet();
+		}
+	}, []);
 
 	return (
 		<Web3Context.Provider

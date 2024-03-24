@@ -1,19 +1,7 @@
-import { AuthEndpoints } from './paths/auth';
-import { PaymentEndpoints } from './paths/payment';
-import { UserProgressEndpoints } from './paths/user-progress';
-import { UserEndpoints } from './paths/user';
-import { BlogEndpoints } from './paths/blog';
-import { AdminEndpoints } from './paths/admin';
-import { PushEndpoints } from './paths/push';
+import { Web3Endpoints } from './paths/eth';
 
 export interface Endpoints
-    extends AuthEndpoints,
-        UserProgressEndpoints,
-        UserEndpoints,
-        PaymentEndpoints,
-        AdminEndpoints,
-        PushEndpoints,
-        BlogEndpoints {}
+    extends Web3Endpoints {}
 
 export const API_PREFIX = '/api';
 

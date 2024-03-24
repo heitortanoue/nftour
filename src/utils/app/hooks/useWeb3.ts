@@ -28,7 +28,8 @@ const useWeb3Provider = () => {
 	};
 
 	const { toast } = useToast();
-	const [state, setState] = useState<IWeb3State>(initialWeb3State);
+    const [state, setState] = useState<IWeb3State>(initialWeb3State);
+    const [loading, setLoading] = useState(true);
 
 	const connectWallet = useCallback(async () => {
 		if (state.isAuthenticated) return;
@@ -36,7 +37,8 @@ const useWeb3Provider = () => {
 		try {
 			const { ethereum } = window;
 
-			if (!ethereum) {
+            if (!ethereum) {
+                setLoading(false);
 				return toast({
 					variant: 'destructive',
 					title: 'No ethereum wallet found',
@@ -61,7 +63,9 @@ const useWeb3Provider = () => {
 				});
 
 				localStorage.setItem('isAuthenticated', 'true');
-			}
+            }
+
+            setLoading(false);
 		} catch {}
 	}, [state, toast]);
 
@@ -86,7 +90,7 @@ const useWeb3Provider = () => {
 			setState({ ...state, address: typedAccounts[0] });
 		});
 
-        window.ethereum.on('networkChanged', (network: any) => {
+        window.ethereum.on('chainChanged', (network: any) => {
             const typedNetwork = network as string;
 			setState({ ...state, currentChain: Number(typedNetwork) });
 		});
@@ -97,7 +101,8 @@ const useWeb3Provider = () => {
 	}, [state]);
 
 	return {
-		connectWallet,
+        connectWallet,
+        loading,
 		disconnect,
 		state
 	};

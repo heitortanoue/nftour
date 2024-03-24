@@ -6,3 +6,4 @@ export interface UsuarioDB {
     _createdAt: Date;
     _updatedAt: Date;
 }
+
