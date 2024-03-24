@@ -13,6 +13,7 @@ import {
 } from '@/utils/server/functions/misc/constants';
 import { QRCode } from '@/utils/server/models';
 import { useRouter } from 'next/router';
+import { useState } from 'react';
 
 export async function getServerSideProps(context: any) {
 	const { qrCode } = context.query;
@@ -57,6 +58,7 @@ export default function QRCodeScreen({
 	nft: (typeof NFT_MAP)[0];
 }) {
 	const { error: pError, position } = useLocation();
+	const [loading, setLoading] = useState(false);
 	const { state } = useWeb3Provider();
 	const router = useRouter();
 	const { toast } = useToast();
@@ -107,6 +109,7 @@ export default function QRCodeScreen({
 	}
 
 	async function addNFTToWallet() {
+		setLoading(true);
 		const res = await endpointRequest('/eth/token', 'POST', {
 			to: state.address as string,
 			nft_url: nft.image
@@ -118,12 +121,14 @@ export default function QRCodeScreen({
 				title: 'Error adding NFT to wallet',
 				description: 'Please try again later'
 			});
+			setLoading(false);
 			return;
 		}
 
 		toast({
-			title: 'NFT added to wallet'
+			title: 'NFT and TourTokens added to wallet'
 		});
+		setLoading(false);
 		router.push(ROUTES.APP);
 	}
 
@@ -137,9 +142,16 @@ export default function QRCodeScreen({
 					<i className="fa-solid fa-map-pin" aria-hidden />
 					<div>NFT do {location.location_name}</div>
 				</div>
-				<Button className="mt-3" onClick={() => addNFTToWallet()}>
-					Add it to your wallet
-				</Button>
+				{loading ? (
+					<Button className="mt-3" onClick={() => addNFTToWallet()}>
+						Add it to your wallet
+					</Button>
+				) : (
+					<Button className="mt-3" disabled>
+						<div className="animate-pulse w-6 h-6 border-t-2 border-b-2 border-secondary mr-2 rounded-full" />
+						<div>Loading</div>
+					</Button>
+				)}
 			</div>
 		</Layout>
 	);

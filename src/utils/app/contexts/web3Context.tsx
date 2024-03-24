@@ -19,7 +19,7 @@ const Web3ContextProvider: FC<Props> = ({ children }) => {
 	const { connectWallet, disconnect, state } = useWeb3Provider();
 	const router = useRouter();
 
-	const tryToConnectOnLinks = ['/app/wallet', '/app/album', '/app/coupons'];
+	const tryToConnectOnLinks = ['/app/wallet', '/app/album', '/app/coupons', '/app/scan'];
 
 	useEffect(() => {
 		if (tryToConnectOnLinks.includes(router.pathname)) {
