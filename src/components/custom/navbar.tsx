@@ -1,85 +1,144 @@
-import {
-	NavigationMenu,
-	NavigationMenuContent,
-	NavigationMenuIndicator,
-	NavigationMenuItem,
-	NavigationMenuLink,
-	NavigationMenuList,
-	NavigationMenuTrigger,
-	NavigationMenuViewport,
-	navigationMenuTriggerStyle
-} from '@/components/ui/navigation-menu';
-import {
-	Sheet,
-	SheetContent,
-	SheetDescription,
-	SheetHeader,
-	SheetTitle,
-	SheetTrigger
-} from '@/components/ui/sheet';
-import Link from 'next/link';
-import { Button } from '../ui/button';
-import { Menu } from 'lucide-react';
+import React, { useState } from 'react';
 import Image from 'next/image';
+import Link from 'next/link';
 
-const navMenuItems = [
-	{ label: 'Sobre', href: '#about' },
-	{ label: 'Funcionalidades', href: '#features' },
-	{ label: 'FAQ', href: '#faq' },
-	{ label: 'Cadastre-se', href: '#' },
-	{ label: 'Login', href: '/app' }
+const defaultSections = [
+	{
+		title: 'Ini­cio',
+		href: '/'
+	},
+	{
+		title: 'Planos',
+		href: '/'
+	},
+	{
+		title: 'Blog',
+		href: '/'
+	}
 ];
 
-export default function Navbar() {
-	return (
-		<>
-			<div className="sm:hidden flex justify-end p-4 sticky top-0 bg-slate-50">
-				<Sheet>
-					<SheetTrigger asChild>
-						<Button variant="outline" size="icon" className="shrink-0 md:hidden">
-							<Menu className="h-5 w-5" />
-							<span className="sr-only">Toggle navigation menu</span>
-						</Button>
-					</SheetTrigger>
-					<SheetContent>
-						<SheetHeader>
-							<SheetTitle>TravelCoin</SheetTitle>
-						</SheetHeader>
-						<div className="mt-8 flex flex-col items-center gap-y-4">
-							{navMenuItems.map((item, index) => (
-								<Link key={index} href={item.href} legacyBehavior passHref>
-									{item.label}
+const NavBar = ({
+	sections = defaultSections
+}: {
+	sections?: { title: string; href: string }[];
+}) => {
+	const [openSideBar, setOpenSideBar] = useState(false);
+
+	const SideBar = () => {
+		return (
+			<aside
+				className={`fixed top-0 right-0 z-10 h-screen transition-all flex
+            whitespace-nowrap ${openSideBar ? 'w-screen' : 'w-0 delay-300'}`}
+			>
+				<div
+					className={`${
+						openSideBar ? 'bg-dark/40' : 'bg-transparent'
+					} transition-all  h-full flex-1`}
+					onClick={() => setOpenSideBar(false)}
+				/>
+				<div
+					className={`h-full bg-white p-5 shadow-md overflow-hidden
+                    transition-all duration-500 ease-in-out ${openSideBar ? 'w-2/3' : 'w-0'}`}
+				>
+					<div
+						onClick={() => setOpenSideBar(false)}
+						className="flex justify-end mb-8 cursor-pointer"
+					>
+						<i className="fa-solid fa-x" aria-hidden />
+					</div>
+					<nav className={`flex flex-col justify-center items-center gap-3`}>
+						{sections &&
+							sections.length &&
+							sections.map((section) => (
+								<Link
+									href={section.href}
+									key={section.href}
+									className="font-semibold"
+									onClick={() => setOpenSideBar(false)}
+								>
+									{section.title}
 								</Link>
 							))}
-						</div>
-					</SheetContent>
-				</Sheet>
-			</div>
-			<div className="hidden sm:flex sm:justify-between sm:items-center p-4 sticky top-0 bg-slate-50">
-				<Image
-					src="https://github.com/guijun13.png"
-					height={60}
-					width={60}
-					alt="TravelCoin"
-				/>
-				<div>
-					<NavigationMenu>
-						<NavigationMenuList>
-							{navMenuItems.map((item, index) => (
-								<NavigationMenuItem key={index}>
-									<Link href={item.href} legacyBehavior passHref>
-										<NavigationMenuLink
-											className={navigationMenuTriggerStyle()}
-										>
-											{item.label}
-										</NavigationMenuLink>
-									</Link>
-								</NavigationMenuItem>
-							))}
-						</NavigationMenuList>
-					</NavigationMenu>
+					</nav>
+					<hr className="border-t w-full border-gray my-6" />
+					<div className="flex flex-col justify-center items-center gap-5">
+						<a href={''} className="font-semibold flex text-primary-dark items-center">
+							<i className="fa-solid fa-user mr-3" aria-hidden />
+							Entrar
+						</a>
+						<a
+							href={''}
+							className="font-semibold flex text-primary-dark items-center
+                        border-2 border-primary-dark rounded-md px-4 py-2"
+						>
+							Cadastrar
+						</a>
+					</div>
 				</div>
-			</div>
+			</aside>
+		);
+	};
+
+	return (
+		<>
+			<SideBar />
+			<header className={`px-phone py-4`}>
+				<div className="flex justify-between items-center gap-x-10">
+					<Link href={'/'} className="flex-shrink-0">
+						<Image
+							alt={'logo'}
+							src={''}
+							width={695 * 0.25}
+							height={100 * 0.25}
+							priority
+						/>
+					</Link>
+
+					{/* DESKTOP NAVBAR */}
+					<nav className="hidden md:flex gap-6 items-center text-sm">
+						<div className="flex items-center gap-5">
+							{sections &&
+								sections.length &&
+								sections.map((section) => (
+									<div
+										key={section.href}
+										className="group flex flex-col items-center p-2"
+									>
+										<Link href={section.href} className="font-medium">
+											{section.title.toUpperCase()}
+										</Link>
+										<div className="h-0.5 w-0 transition-[width] ease-out group-hover:w-full" />
+									</div>
+								))}
+						</div>
+
+						<div className="flex items-center gap-4 text-xs">
+							<Link
+								href=""
+								className="flex items-center rounded-md px-3 py-1.5 h-fit border-2"
+							>
+								<i className="fa-solid fa-user mr-3" aria-hidden />
+								<span className="font-semibold">Entrar</span>
+							</Link>
+							<Link
+								href=""
+								className="font-semibold border-2 border-primary rounded-md px-3 py-1.5 h-fit"
+							>
+								Cadastrar
+							</Link>
+						</div>
+					</nav>
+
+					{/* MOBILE BARS ICON*/}
+					<i
+						onClick={() => setOpenSideBar((prev) => !prev)}
+						className="md:!hidden fa-solid fa-bars text-lg p-1 cursor-pointer"
+						aria-hidden
+					/>
+				</div>
+			</header>
 		</>
 	);
-}
+};
+
+export default NavBar;
