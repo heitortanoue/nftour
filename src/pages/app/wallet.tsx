@@ -25,8 +25,8 @@ export default function Wallet() {
 
 		console.log('Trying to mint');
 		const data = await mint(
-			'https://ipfs.io/ipfs/QmZz1kL1YFvKtB3zH5Kt5XV7yV6K5sQ7yQ7zG7zQ7zG7zQ',
-			'0xd9a0f37b2AB92b3b95A38deCf238C5981878c205'
+			'https://i.ibb.co/ChVZ29S/Oscar-Niemieyer-psd.png',
+			state.address || ''
 		);
 		console.log('Minted');
 		console.log(data);
@@ -43,11 +43,17 @@ export default function Wallet() {
 
 	return (
 		<div className="mt-12 ml-12 z-40">
-            <div onClick={() => tryToMint()}>Mintar</div>
-            <button onClick={() => useEndpointRequest('/eth/token', 'POST', {
-                ammount: 12,
-                to: '0xd9a0f37b2AB92b3b95A38deCf238C5981878c205'
-            })}>Mintar token</button>
+			<div onClick={() => tryToMint()}>Mintar</div>
+			<button
+				onClick={() =>
+					useEndpointRequest('/eth/token', 'POST', {
+						ammount: 12,
+						to: '0xd9a0f37b2AB92b3b95A38deCf238C5981878c205'
+					})
+				}
+			>
+				Mintar token
+			</button>
 
 			<p>{state.address}</p>
 		</div>
