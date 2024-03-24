@@ -23,7 +23,8 @@ Router.events.on('routeChangeError', () => {
 });
 
 const font_pixel = Pixelify_Sans({
-	weight: ['400', '500', '600', '700'],
+    weight: ['400', '500', '600', '700'],
+    display: 'swap',
 	subsets: ['latin-ext'],
 	variable: '--font-pixel'
 });

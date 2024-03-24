@@ -1,15 +1,18 @@
 import Frame from '@/components/custom/frame';
 import Layout from '@/components/custom/layout';
 import { Button } from '@/components/ui/button';
+import { useToast } from '@/components/ui/use-toast';
 import { endpointRequest } from '@/utils/app/hooks/useEndpoint';
 import { useLocation } from '@/utils/app/hooks/useLocation';
 import useWeb3Provider from '@/utils/app/hooks/useWeb3';
 import {
 	LOCATION_MAP,
 	MAX_DISTANCE_IN_METERS,
-	NFT_MAP
+	NFT_MAP,
+	ROUTES
 } from '@/utils/server/functions/misc/constants';
 import { QRCode } from '@/utils/server/models';
+import { useRouter } from 'next/router';
 
 export async function getServerSideProps(context: any) {
 	const { qrCode } = context.query;
@@ -55,6 +58,9 @@ export default function QRCodeScreen({
 }) {
 	const { error: pError, position } = useLocation();
 	const { state } = useWeb3Provider();
+	const router = useRouter();
+	const { toast } = useToast();
+
 	if (pError) {
 		return (
 			<Layout>
@@ -100,6 +106,27 @@ export default function QRCodeScreen({
 		);
 	}
 
+	async function addNFTToWallet() {
+		const res = await endpointRequest('/eth/token', 'POST', {
+			to: state.address as string,
+			nft_url: nft.image
+		});
+
+		if (!res.success) {
+			toast({
+				variant: 'destructive',
+				title: 'Error adding NFT to wallet',
+				description: 'Please try again later'
+			});
+			return;
+		}
+
+		toast({
+			title: 'NFT added to wallet'
+		});
+		router.push(ROUTES.APP);
+	}
+
 	return (
 		<Layout>
 			<div className="flex flex-col gap-3 items-center mt-10">
@@ -110,15 +137,7 @@ export default function QRCodeScreen({
 					<i className="fa-solid fa-map-pin" aria-hidden />
 					<div>NFT do {location.location_name}</div>
 				</div>
-				<Button
-					className="mt-3"
-					onClick={() =>
-						endpointRequest('/eth/token', 'POST', {
-							to: state.address as string,
-							nft_url: nft.image
-						})
-					}
-				>
+				<Button className="mt-3" onClick={() => addNFTToWallet()}>
 					Add it to your wallet
 				</Button>
 			</div>

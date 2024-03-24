@@ -4,6 +4,8 @@
 
 @layer base {
 	:root {
+        --greenTheme: ;
+
 		--background: 0 0% 100%;
 		--foreground: 240 10% 3.9%;
 
@@ -146,7 +148,7 @@
 }
 
 #nprogress .bar {
-	background: rgb(var(--green));
+	background: rgb(var(--greenTheme));
 
 	position: fixed;
 	z-index: 1031;
@@ -164,7 +166,7 @@
 	right: 0px;
 	width: 100px;
 	height: 100%;
-	box-shadow: 0 0 10px rgb(var(--green)), 0 0 5px rgb(var(--green));
+	box-shadow: 0 0 10px rgb(var(--greenTheme)), 0 0 5px rgb(var(--greenTheme));
 	opacity: 1;
 
 	-webkit-transform: rotate(3deg) translate(0px, -4px);
@@ -192,7 +194,7 @@
 }
 
 .CircularProgressbar .CircularProgressbar-path {
-	stroke: rgb(var(--green));
+	stroke: rgb(var(--greenTheme));
 	stroke-linecap: round;
 	transition: stroke-dashoffset 0.5s ease 0s;
 }
@@ -203,7 +205,7 @@
 }
 
 .CircularProgressbar .CircularProgressbar-text {
-	fill: rgb(var(--green));
+	fill: rgb(var(--greenTheme));
 	font-size: 2.5rem;
 	dominant-baseline: middle;
 	text-anchor: middle;
@@ -214,7 +216,7 @@
 }
 
 .CircularProgressbar.CircularProgressbar-inverted .CircularProgressbar-background {
-	fill: rgb(var(--green));
+	fill: rgb(var(--greenTheme));
 }
 
 .CircularProgressbar.CircularProgressbar-inverted .CircularProgressbar-text {

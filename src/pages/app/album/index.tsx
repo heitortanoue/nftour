@@ -30,7 +30,7 @@ function Album() {
 		if (!state.address) return;
 
 		getNFTs();
-	}, [state.address]);
+	}, [state.address, state.isAuthenticated]);
 
 	if (loading) {
 		return (
