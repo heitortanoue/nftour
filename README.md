@@ -1,5 +1,5 @@
 # NFTour
 
-### Collect NFTs from the places you visit and share your experiences with the world.
+### Blockchain-powered NFTs of landmarks offer unique perks, gamifying real-world exploration.
 
 ETHSamba Project
