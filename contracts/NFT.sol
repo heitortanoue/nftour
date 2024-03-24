@@ -19,12 +19,12 @@ contract NFT is ERC721URIStorage {
         return (tokenCount);
     }
 
-    function getUserNFTsImages(address a) public view returns(uint[] memory) {
-        uint[] memory userNFTs = new uint[](balanceOf(a));
+    function getUserNFTs(address a) public view returns(string[] memory) {
+        string[] memory userNFTs = new string[](balanceOf(a));
         uint index = 0;
         for (uint i = 1; i <= tokenCount; i++) {
             if (ownerOf(i) == a) {
-                userNFTs[index] = i;
+                userNFTs[index] = tokenURI(i);
                 index++;
             }
         }

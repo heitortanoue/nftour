@@ -1,6 +1,4 @@
 {
 	"extends": "next/core-web-vitals",
-	"strict": "false",
-	"rules": { "react/display-name": "off" },
-	"compilerOptions": { "noImplicitAny": false }
+	"rules": { "react/display-name": "off" }
 }

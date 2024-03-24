@@ -6,6 +6,7 @@ import Frame from '@/components/custom/frame';
 
 export async function getServerSideProps(ctx) {
     const { slug } = ctx.query;
+    console.log(`getServerSideProps: slug=${slug}`);
     return {
         props: {
             slug
