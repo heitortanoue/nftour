@@ -64,20 +64,6 @@ const NavBar = ({
 								</Link>
 							))}
 					</nav>
-					<hr className="border-t w-full border-gray my-6" />
-					<div className="flex flex-col justify-center items-center gap-5">
-						<a href={''} className="font-semibold flex text-primary-dark items-center">
-							<i className="fa-solid fa-user mr-3" aria-hidden />
-							Login
-						</a>
-						<a
-							href={''}
-							className="font-semibold flex text-primary-dark items-center
-                        border-2 border-primary-dark rounded-md px-4 py-2"
-						>
-							Sing Up
-						</a>
-					</div>
 				</div>
 			</aside>
 		);
@@ -91,7 +77,7 @@ const NavBar = ({
 					<Link href={'/'} className="flex-shrink-0">
 						<Image
 							alt={'logo'}
-							src={''}
+							src={'/logos/text.png'}
 							width={695 * 0.25}
 							height={100 * 0.25}
 							priority
@@ -114,22 +100,6 @@ const NavBar = ({
 										<div className="h-0.5 w-0 transition-[width] ease-out group-hover:w-full" />
 									</div>
 								))}
-						</div>
-
-						<div className="flex items-center gap-4 text-xs">
-							<Link
-								href=""
-								className="flex items-center rounded-md px-3 py-1.5 h-fit border-2"
-							>
-								<i className="fa-solid fa-user mr-3" aria-hidden />
-								<span className="font-semibold">Enter</span>
-							</Link>
-							<Link
-								href=""
-								className="font-semibold border-2 border-primary rounded-md px-3 py-1.5 h-fit"
-							>
-								Sign Up
-							</Link>
 						</div>
 					</nav>
 

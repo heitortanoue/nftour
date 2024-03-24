@@ -31,6 +31,18 @@ export const LOCATION_MAP: {
 	{
 		location_name: 'ETHSamba Hack',
 		location_coordinates: [-22.980599299585155, -43.2168431149823]
+	},
+	{
+		location_name: 'Bar da Cachaça',
+		location_coordinates: [-22.912365771841785, -43.18340714563299]
+	},
+	{
+		location_name: 'Bar Pavão Azul',
+		location_coordinates: [-22.965509284626954, -43.18434957556139]
+	},
+	{
+		location_name: 'Bonde Boca',
+		location_coordinates: [-22.9196156086533, -43.189878745008535]
 	}
 ];
 
@@ -59,12 +71,27 @@ export const NFT_MAP = [
 		name: 'Ilustração do Theatro Municipal do Rio de Janeiro',
 		image: 'https://i.ibb.co/93FRR6z/Theatro-Municipal-do-Rio-de-Janeiro.png',
 		location: 'Theatro Municipal do Rio de Janeiro'
+	},
+	{
+		name: 'Mesa do Bonde Boca',
+		image: 'https://i.ibb.co/Bwc5ytR/DALL-E-2024-03-24-06-45-21-Create-a-circular-badge-in-a-cartoon-style-with-a-1-2x-zoomed-in-depictio.png',
+		location: 'Bonde Boca'
+	},
+	{
+		name: 'Cana do Bar da Cachaça',
+		image: 'https://i.ibb.co/0jnfYyZ/DALL-E-2024-03-24-06-40-18-Create-an-image-featuring-a-whimsical-cartoon-style-illustration-of-a-bot.png',
+		location: 'Bar da Cachaça'
+	},
+	{
+		name: 'Pavão do Bar Pavão Azul',
+		image: 'https://i.ibb.co/z2cvtHM/DALL-E-2024-03-24-06-36-58-A-semi-realistic-illustration-of-a-peacock-blending-elements-of-realism-w.png',
+		location: 'Bar Pavão Azul'
 	}
 ];
 
 export const CONTRACTS = {
 	NFT: '0xb56F1b163ADA5aF0F2293804a7A2f688665205F1',
-	TOKEN: '0x84Dbf45fc4151Ac7207e3A72d1177209a032b558'
+	TOKEN: '0xfB33C2124a863dABC781E3852726e7317d832B13'
 };
 
 export const MAX_DISTANCE_IN_METERS = 200;

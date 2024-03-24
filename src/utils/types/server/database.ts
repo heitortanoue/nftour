@@ -28,7 +28,7 @@ export interface PromotionDB {
     title: string;
     photo: string;
     description: string;
-    discount: number;
+    cost: number;
 
     _createdAt: Date;
 }

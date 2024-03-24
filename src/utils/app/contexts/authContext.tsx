@@ -2,7 +2,7 @@ import { createContext, useState } from 'react';
 import { parseCookies } from 'nookies';
 import { useRouter } from 'next/router';
 
-import { useEndpointRequest } from '../hooks/useEndpoint';
+import { endpointRequest } from '../hooks/useEndpoint';
 
 interface AuthContextData {
 	user: string | null;
@@ -30,7 +30,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
 		setLoading(true);
 		const response: { error?: string; message?: string } = {};
 
-		const loginResponse = await useEndpointRequest('/auth/verifyOTP', 'POST', {
+		const loginResponse = await endpointRequest('/auth/verifyOTP', 'POST', {
 			email,
 			otp
 		});
@@ -50,7 +50,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
 	};
 
 	// const signOut = async () => {
-	// 	await useEndpointRequest('/auth/sign-out', undefined);
+	// 	await endpointRequest('/auth/sign-out', undefined);
 	// 	setUser(null);
 	// 	router.push('/');
 

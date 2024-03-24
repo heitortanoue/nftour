@@ -1,4 +1,8 @@
+import Frame from '@/components/custom/frame';
+import Layout from '@/components/custom/layout';
 import { Section } from '@/components/custom/section';
+import { Button } from '@/components/ui/button';
+import { cn } from '@/lib/utils';
 import useNFTContract from '@/utils/app/hooks/useNFTContract';
 import useWeb3Provider from '@/utils/app/hooks/useWeb3';
 import { NFT_MAP } from '@/utils/server/functions/misc/constants';
@@ -11,64 +15,78 @@ function Album() {
 	const nftContract = useNFTContract();
 	const [NFTs, setNFTs] = useState<string[]>([]);
 
-	NFT_MAP.forEach((NFT) => {
-		if (NFTs.includes(NFT.image)) {
-			Object.assign(NFT, { collected: true });
-		} else {
-			Object.assign(NFT, { collected: false });
-		}
+	const mappedNFTs = NFT_MAP.map((NFT) => {
+		return { ...NFT, collected: NFTs.includes(NFT.image) };
 	});
-
-	console.log('NFTs', NFTs);
 
 	async function getNFTs() {
 		if (!state.address) return;
-		await nftContract.getUserNFTs(state.address).then((res) => {
-			setNFTs(res);
-		});
+		const res = await nftContract.getUserNFTs(state.address);
+		if (!res) return;
+		setNFTs(res);
 	}
 
 	useEffect(() => {
 		if (!state.address) return;
 
 		getNFTs();
-	}, [state.address, loading]);
+	}, [state.address]);
 
 	if (loading) {
-		return <div>Conectando...</div>;
+		return (
+			<Layout>
+				<Frame>Conectando...</Frame>
+			</Layout>
+		);
 	}
 
 	if (!NFTs || NFTs.length === 0) {
-		return <div>Nenhum NFT encontrado</div>;
+		return (
+			<Layout>
+				<Frame>
+					<div className="text-center">
+						<h1 className="text-2xl font-bold mb-3">
+							No NFT collected yet. Go to the hunt!
+						</h1>
+						<Button>
+							<Link href="/app/hunt">Go to the hunt</Link>
+						</Button>
+					</div>
+				</Frame>
+			</Layout>
+		);
 	}
 
-	console.log('NFT_MAP', NFT_MAP);
-
 	return (
-		<div className="p-4">
-			<Section.Title>Meus NFTs</Section.Title>
-			<div className="pt-12 grid grid-cols-1 md:grid-cols-4 items-center gap-8">
-				{NFT_MAP.map((NFT, index) => (
-					<Link
-						href={`/app/album/${index}`}
-						key={index}
-						className={`flex justify-center ${
-							NFT.collected === false ? 'pointer-events-none' : ''
-						}`}
-						aria-disabled={NFT.collected === false}
-						tabIndex={NFT.collected === false ? -1 : undefined}
-					>
-						<Image
-							src={NFT.image}
-							alt={NFT.name}
-							width="200"
-							height="200"
-							className={`${NFT.collected === true ? '' : 'grayscale blur-[2px]'}`}
-						/>
-					</Link>
-				))}
-			</div>
-		</div>
+		<Layout>
+			<Frame>
+				<h1 className="font-pixel text-4xl text-center">My Album</h1>
+				<div className="pt-12 grid grid-cols-1 md:grid-cols-5 gap-8">
+					{mappedNFTs.map((NFT, index) => (
+						<Link
+							href={`/app/album/${index}`}
+							key={index}
+							className={`flex justify-center bg-white p-3 rounded-lg border ${
+								NFT.collected === false ? 'pointer-events-none' : ''
+							}`}
+							aria-disabled={NFT.collected === false}
+							tabIndex={NFT.collected === false ? -1 : undefined}
+						>
+							<Image
+								src={NFT.image}
+								alt={NFT.name}
+								width="150"
+								height="150"
+								className={cn(
+									'hover:scale-110 transition-transform',
+									`${NFT.collected === true ? '' : 'grayscale blur-[2px]'}`
+								)}
+							/>
+						</Link>
+					))}
+				</div>
+			</Frame>
+		</Layout>
 	);
 }
 

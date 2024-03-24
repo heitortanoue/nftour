@@ -1,6 +1,7 @@
+import Frame from '@/components/custom/frame';
 import Layout from '@/components/custom/layout';
 import { Button } from '@/components/ui/button';
-import { useEndpointRequest } from '@/utils/app/hooks/useEndpoint';
+import { endpointRequest } from '@/utils/app/hooks/useEndpoint';
 import { useLocation } from '@/utils/app/hooks/useLocation';
 import useWeb3Provider from '@/utils/app/hooks/useWeb3';
 import {
@@ -55,22 +56,48 @@ export default function QRCodeScreen({
 	const { error: pError, position } = useLocation();
 	const { state } = useWeb3Provider();
 	if (pError) {
-		return <div>Ative sua localização para usar esse serviço</div>;
+		return (
+			<Layout>
+				<Frame>Enable your location to use this service</Frame>
+			</Layout>
+		);
 	}
 
 	const [latitude, longitude] = position;
 	if (
-		isWithinMaxDistance(
+		!isWithinMaxDistance(
 			[latitude, longitude],
 			location.location_coordinates,
 			MAX_DISTANCE_IN_METERS / 1000
 		)
 	) {
-		return <div>Fora da área de checkin</div>;
+		return (
+			<Layout>
+				<Frame className="flex gap-5 flex-col items-center m-auto">
+					<i className="fa-solid fa-map-pin text-4xl" aria-hidden />
+					<div>Out of the check-in area for this Point</div>
+					<Button className="mt-3" onClick={() => window.location.reload()}>
+						Try again
+					</Button>
+				</Frame>
+			</Layout>
+		);
 	}
 
 	if (!state || !state.address) {
-		return <div>Conecte sua carteira para usar esse serviço</div>;
+		return (
+			<Layout>
+				<Frame>
+					<div className="flex gap-5 flex-col items-center">
+						<i className="fa-solid fa-user-circle text-4xl" aria-hidden />
+						<div>Connect your wallet to use this service</div>
+						<Button className="mt-3" onClick={() => window.location.reload()}>
+							Try again
+						</Button>
+					</div>
+				</Frame>
+			</Layout>
+		);
 	}
 
 	return (
@@ -83,10 +110,15 @@ export default function QRCodeScreen({
 					<i className="fa-solid fa-map-pin" aria-hidden />
 					<div>NFT do {location.location_name}</div>
 				</div>
-                <Button className="mt-3" onClick={() => useEndpointRequest('/eth/token', 'POST', {
-                    to: state.address as string,
-                    nft_url: nft.image
-                })}>
+				<Button
+					className="mt-3"
+					onClick={() =>
+						endpointRequest('/eth/token', 'POST', {
+							to: state.address as string,
+							nft_url: nft.image
+						})
+					}
+				>
 					Add it to your wallet
 				</Button>
 			</div>

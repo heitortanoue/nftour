@@ -20,11 +20,11 @@ export default function Steps() {
 				{stepsData.map((step, index) => (
 					<div key={index} className="flex items-center space-x-4">
 						<div className="flex items-center justify-center rounded-lg border border-gray-200 bg-gray-50 w-10 h-10">
-							<span className="text-sm font-semibold">{index + 1}</span>
+							<span className="text-sm font-semibold text-black">{index + 1}</span>
 						</div>
-						<div className="flex flex-col text-start">
+						<div className="flex-1 flex-col text-start">
 							<h3 className="text-sm font-semibold">{step.title}</h3>
-							<p className="text-sm text-gray-500">{step.description}</p>
+							<p className="text-sm text-gray-300">{step.description}</p>
 						</div>
 					</div>
 				))}

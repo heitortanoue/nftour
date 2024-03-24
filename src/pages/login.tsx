@@ -9,7 +9,7 @@ import {
 	InputOTPSlot
 } from '@/components/ui/input-otp';
 
-import { useEndpointRequest } from '@/utils/app/hooks/useEndpoint';
+import { endpointRequest } from '@/utils/app/hooks/useEndpoint';
 
 export default function Login() {
 	const [email, setEmail] = useState('');
@@ -19,7 +19,7 @@ export default function Login() {
 
 	async function handleLogin() {
 		setLoading(true);
-		const response = await useEndpointRequest('/auth/sendOTP', 'POST', { email });
+		const response = await endpointRequest('/auth/sendOTP', 'POST', { email });
 		if (!response.success === true) {
 			alert('An error occurred. Please try again later.');
 			return;
@@ -31,7 +31,7 @@ export default function Login() {
 
     async function handleOTP() {
         setLoading(true);
-        const response = await useEndpointRequest('/auth/verifyOTP', 'POST', { email, otp });
+        const response = await endpointRequest('/auth/verifyOTP', 'POST', { email, otp });
         if (!response.success === true) {
             alert('An error occurred. Please try again later.');
             return;
@@ -70,7 +70,7 @@ export default function Login() {
 					<p className="mb-5 text-sm text-gray-500">
 						We sent a 6-digit code to <strong>{email}</strong>. Please enter it below.
 					</p>
-					<InputOTP maxLength={6} on>
+					<InputOTP maxLength={6}>
 						<InputOTPGroup>
 							<InputOTPSlot index={0} />
 							<InputOTPSlot index={1} />

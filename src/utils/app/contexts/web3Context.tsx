@@ -22,8 +22,12 @@ const Web3ContextProvider: FC<Props> = ({ children }) => {
 	const tryToConnectOnLinks = ['/app/wallet', '/app/album'];
 
 	useEffect(() => {
-		if (tryToConnectOnLinks.includes(router.pathname)) {
-			connectWallet();
+        if (tryToConnectOnLinks.includes(router.pathname)) {
+            try {
+                connectWallet();
+            } catch (error) {
+                console.error(error);
+            }
 		}
 	}, []);
 

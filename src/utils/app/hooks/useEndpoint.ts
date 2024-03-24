@@ -29,7 +29,7 @@ const buildBody = <E extends keyof Endpoints, M extends EMethodOf<E>>() => {
 	};
 };
 
-export async function useEndpointRequest<E extends keyof Endpoints, M extends EMethodOf<E>>(
+export async function endpointRequest<E extends keyof Endpoints, M extends EMethodOf<E>>(
 	endpoint: E,
 	method: M,
 	payload?: EParamType<E, M>

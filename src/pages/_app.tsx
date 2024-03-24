@@ -6,7 +6,7 @@ import Head from 'next/head';
 import Router from 'next/router';
 import { Toaster } from '@/components/ui/toaster';
 
-import { Poppins } from 'next/font/google';
+import { Pixelify_Sans } from 'next/font/google';
 
 import type { AppProps } from 'next/app';
 import Web3ContextProvider from '@/utils/app/contexts/web3Context';
@@ -22,10 +22,10 @@ Router.events.on('routeChangeError', () => {
 	nProgress.done();
 });
 
-const poppins = Poppins({
+const font_pixel = Pixelify_Sans({
 	weight: ['400', '500', '600', '700'],
 	subsets: ['latin-ext'],
-	variable: '--font-poppins'
+	variable: '--font-pixel'
 });
 
 export default function App({ Component, pageProps }: AppProps) {
@@ -46,7 +46,7 @@ export default function App({ Component, pageProps }: AppProps) {
 				strategy="beforeInteractive"
 			/>
 
-			<div className={`${poppins.variable} font-sans`}>
+			<div className={`${font_pixel.variable} font-sans`}>
 				<Contexts>
 					<Component {...pageProps} />
 					<Toaster />
