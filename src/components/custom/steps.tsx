@@ -25,8 +25,8 @@ export default function Steps() {
 							<span className="text-sm font-semibold text-black">{index + 1}</span>
 						</div>
 						<div className="flex-1 flex-col text-start">
-							<h3 className="text-lg font-semibold">{step.title}</h3>
-							<p className="text-base text-gray-300">{step.description}</p>
+							<h3 className="text-lg font-bold">{step.title}</h3>
+							<p className="text-base text-gray-50">{step.description}</p>
 						</div>
 					</div>
 				))}
