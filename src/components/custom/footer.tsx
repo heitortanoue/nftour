@@ -64,9 +64,7 @@ export default function Footer() {
 						order-2 lg:order-1"
 				>
 					{/* <Image src={logoBranca} alt="Logo" width={200} /> */}
-					<div className="text-xxs text-gray-dark">
-						2024 © VestCards - Todos os direitos reservados. 🇧🇷
-					</div>
+					<div className="text-xxs text-gray-dark">2024 © NFTur - 🇧🇷</div>
 				</div>
 				<div className="grid md:grid-cols-3 gap-10 flex-1 order-1 lg:order-2">
 					{links.map((l) => {

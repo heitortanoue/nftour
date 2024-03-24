@@ -4,16 +4,20 @@ import Link from 'next/link';
 
 const defaultSections = [
 	{
-		title: 'Ini­cio',
-		href: '/'
+		title: 'About',
+		href: '#about'
 	},
 	{
-		title: 'Planos',
-		href: '/'
+		title: 'Steps',
+		href: '#steps'
 	},
 	{
-		title: 'Blog',
-		href: '/'
+		title: 'Funcionalities',
+		href: '#features'
+	},
+	{
+		title: 'FAQ',
+		href: '#faq'
 	}
 ];
 
@@ -64,14 +68,14 @@ const NavBar = ({
 					<div className="flex flex-col justify-center items-center gap-5">
 						<a href={''} className="font-semibold flex text-primary-dark items-center">
 							<i className="fa-solid fa-user mr-3" aria-hidden />
-							Entrar
+							Login
 						</a>
 						<a
 							href={''}
 							className="font-semibold flex text-primary-dark items-center
                         border-2 border-primary-dark rounded-md px-4 py-2"
 						>
-							Cadastrar
+							Sing Up
 						</a>
 					</div>
 				</div>
@@ -82,7 +86,7 @@ const NavBar = ({
 	return (
 		<>
 			<SideBar />
-			<header className={`px-phone py-4`}>
+			<header className={`p-4`}>
 				<div className="flex justify-between items-center gap-x-10">
 					<Link href={'/'} className="flex-shrink-0">
 						<Image
@@ -118,13 +122,13 @@ const NavBar = ({
 								className="flex items-center rounded-md px-3 py-1.5 h-fit border-2"
 							>
 								<i className="fa-solid fa-user mr-3" aria-hidden />
-								<span className="font-semibold">Entrar</span>
+								<span className="font-semibold">Enter</span>
 							</Link>
 							<Link
 								href=""
 								className="font-semibold border-2 border-primary rounded-md px-3 py-1.5 h-fit"
 							>
-								Cadastrar
+								Sign Up
 							</Link>
 						</div>
 					</nav>
