@@ -4,15 +4,25 @@ import { NFT_MAP } from '@/utils/server/functions/misc/constants';
 import Layout from '@/components/custom/layout';
 import Frame from '@/components/custom/frame';
 
-const NFTContent = () => {
+export async function getServerSideProps(ctx) {
+    const { slug } = ctx.query;
+    return {
+        props: {
+            slug
+        }
+    };
+}
+
+const NFTContent = ({ slug }: {
+    slug: number;
+}) => {
 	const router = useRouter();
 
 	if (router.isFallback) {
 		return <div>Loading...</div>;
 	}
 
-	const slug = router.query.slug as unknown;
-    const selectedNFT = NFT_MAP[slug as number];
+    const selectedNFT = NFT_MAP[slug];
 
     if (!selectedNFT) {
         return <div>Not found</div>;
