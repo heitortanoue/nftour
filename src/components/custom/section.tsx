@@ -62,7 +62,9 @@ Section.MiniTitle = ({ children }: { children: React.ReactNode }) => (
 );
 
 Section.Title = ({ children }: { children: React.ReactNode }) => (
-	<h2 className="text-4xl lg:text-5xl tracking-tight !leading-tight text-center">{children}</h2>
+	<h2 className="font-pixel text-4xl lg:text-5xl tracking-tight !leading-tight text-center">
+		{children}
+	</h2>
 );
 Section.HTitle = ({ children }: { children: React.ReactNode }) => (
 	<h2 className="text-center lg:text-left text-4xl lg:text-5xl font-semibold tracking-tight !leading-tight">
