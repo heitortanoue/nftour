@@ -6,7 +6,7 @@ const promotions: Omit<PromotionDB, '_createdAt'>[] = [
 	{
 		_id: '1',
 		title: 'Promoção de Natal',
-		photo: 'https://i.ibb.co/ChVZ29S/Oscar-Niemieyer-psd.png',
+		photo: 'https://i.ibb.co/0jnfYyZ/DALL-E-2024-03-24-06-40-18-Create-an-image-featuring-a-whimsical-cartoon-style-illustration-of-a-bot.png',
 		description: 'Promoção de Natal',
 		cost: 10
 	},
@@ -20,7 +20,7 @@ const promotions: Omit<PromotionDB, '_createdAt'>[] = [
 	{
 		_id: '3',
 		title: 'Promoção de Carnaval',
-		photo: 'https://i.ibb.co/ChVZ29S/Oscar-Niemieyer-psd.png',
+		photo: 'https://i.ibb.co/z2cvtHM/DALL-E-2024-03-24-06-36-58-A-semi-realistic-illustration-of-a-peacock-blending-elements-of-realism-w.png',
 		description: 'Promoção de Carnaval',
 		cost: 30
 	}
