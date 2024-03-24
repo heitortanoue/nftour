@@ -1,10 +1,12 @@
+import { Section } from '@/components/custom/section';
 import useNFTContract from '@/utils/app/hooks/useNFTContract';
 import useWeb3Provider from '@/utils/app/hooks/useWeb3';
 import { NFT_MAP } from '@/utils/server/functions/misc/constants';
 import Image from 'next/image';
+import Link from 'next/link';
 import { useEffect, useState } from 'react';
 
-export default function Album() {
+function Album() {
 	const { state, loading } = useWeb3Provider();
 	const nftContract = useNFTContract();
 	const [NFTs, setNFTs] = useState<string[]>([]);
@@ -44,31 +46,30 @@ export default function Album() {
 
 	return (
 		<div className="p-4">
-			<h1 className="text-center">Meus NFTs</h1>
+			<Section.Title>Meus NFTs</Section.Title>
 			<div className="pt-12 grid grid-cols-1 md:grid-cols-4 items-center gap-8">
 				{NFT_MAP.map((NFT, index) => (
-					<div key={index} className="flex justify-center">
+					<Link
+						href={`/app/album/${index}`}
+						key={index}
+						className={`flex justify-center ${
+							NFT.collected === false ? 'pointer-events-none' : ''
+						}`}
+						aria-disabled={NFT.collected === false}
+						tabIndex={NFT.collected === false ? -1 : undefined}
+					>
 						<Image
 							src={NFT.image}
 							alt={NFT.name}
 							width="200"
 							height="200"
-							className={`${
-								(
-									NFT as {
-										name: string;
-										image: string;
-										location: string;
-										collected: boolean;
-									}
-								).collected === true
-									? ''
-									: 'grayscale blur-[2px] cursor-not-allowed'
-							}`}
+							className={`${NFT.collected === true ? '' : 'grayscale blur-[2px]'}`}
 						/>
-					</div>
+					</Link>
 				))}
 			</div>
 		</div>
 	);
 }
+
+export default Album;
