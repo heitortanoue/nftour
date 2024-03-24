@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import Icon from '../ui/icon';
 
 const socialMediaData = [
@@ -63,7 +64,13 @@ export default function Footer() {
 					className="flex flex-col lg:justify-between items-center lg:items-start gap-8 flex-shrink-0 w-1/3
 						order-2 lg:order-1"
 				>
-					{/* <Image src={logoBranca} alt="Logo" width={200} /> */}
+					<Image
+						src={'/logos/text.png'}
+						width={695 * 0.25}
+						height={100 * 0.25}
+						priority
+						alt="logo"
+					/>
 					<div className="text-xxs text-gray-dark">2024 © NFTur - 🇧🇷</div>
 				</div>
 				<div className="grid md:grid-cols-3 gap-10 flex-1 order-1 lg:order-2">
