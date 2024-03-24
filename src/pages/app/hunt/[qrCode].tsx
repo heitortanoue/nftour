@@ -142,7 +142,7 @@ export default function QRCodeScreen({
 					<i className="fa-solid fa-map-pin" aria-hidden />
 					<div>NFT do {location.location_name}</div>
 				</div>
-				{loading ? (
+				{!loading ? (
 					<Button className="mt-3" onClick={() => addNFTToWallet()}>
 						Add it to your wallet
 					</Button>
