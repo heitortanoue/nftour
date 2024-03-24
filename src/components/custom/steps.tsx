@@ -1,19 +1,15 @@
 const stepsData = [
 	{
-		title: 'Create an Account',
-		description: 'Sign up for a new account'
+		title: 'Capture Landmarks',
+		description: 'Use our digital wallet to scan QR codes at tourist attractions'
 	},
 	{
-		title: 'Verify Email',
-		description: 'Click the link in the email we sent you'
+		title: 'Collect NFTs',
+		description: 'Acquire rare and seasonal NFTs of iconic landmarks'
 	},
 	{
-		title: 'Complete Profile',
-		description: 'Add your information'
-	},
-	{
-		title: 'Start Exploring',
-		description: "You're all set!"
+		title: 'Trade and Explore',
+		description: 'Exchange NFTs on our decentralized marketplace and unlock achievements'
 	}
 ];
 
