@@ -4,6 +4,7 @@ import 'leaflet-defaulticon-compatibility/dist/leaflet-defaulticon-compatibility
 import 'leaflet-defaulticon-compatibility';
 import { useLocation } from '@/utils/app/hooks/useLocation';
 import { Icon } from 'leaflet';
+import { LOCATION_MAP } from '@/utils/server/functions/misc/constants';
 
 const Map = () => {
 	const { position, error: getPositionError } = useLocation();
@@ -30,6 +31,14 @@ const Map = () => {
 					<Popup>Hey ! I live here</Popup>
 				</Marker>
 			)}
+
+			{LOCATION_MAP.map((nft, index) => (
+				<Marker key={index} position={nft.location_coordinates}>
+					<Popup>
+						<img src="https://i.ibb.co/HDxYY4J/DALL-E-2024-03-23-01-31-36-Design-a-cartoon-style-badge-featuring-a-character-based-on-a-black-man-p.png" />
+					</Popup>
+				</Marker>
+			))}
 		</MapContainer>
 	);
 };

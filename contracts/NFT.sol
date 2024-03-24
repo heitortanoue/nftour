@@ -1,42 +1,33 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.20;
 
-import "@openzeppelin/contracts@5.0.0/token/ERC721/ERC721.sol";
-import "@openzeppelin/contracts@5.0.0/token/ERC721/extensions/ERC721URIStorage.sol";
-import "@openzeppelin/contracts@5.0.0/token/ERC721/extensions/ERC721Burnable.sol";
-import "@openzeppelin/contracts@5.0.0/access/Ownable.sol";
+import "@openzeppelin/contracts/token/ERC721/extensions/ERC721URIStorage.sol";
 
-contract MyToken is ERC721, ERC721URIStorage, ERC721Burnable, Ownable {
-    constructor(address initialOwner)
-        ERC721("MyToken", "MTK")
-        Ownable(initialOwner)
-    {}
+contract NFT is ERC721URIStorage {
+    uint public tokenCount;
+    address public owner;
 
-    function safeMint(address to, uint256 tokenId, string memory uri)
-        public
-        onlyOwner
-    {
-        _safeMint(to, tokenId);
-        _setTokenURI(tokenId, uri);
+    constructor() ERC721("Tour NFT", "TOUR") {
+        owner = msg.sender;
     }
 
-    // The following functions are overrides required by Solidity.
+    function mint(string memory _tokenURI, address to) external returns(uint) {
+        tokenCount++;
+        _safeMint(to, tokenCount);
+        _setTokenURI(tokenCount, _tokenURI);
 
-    function tokenURI(uint256 tokenId)
-        public
-        view
-        override(ERC721, ERC721URIStorage)
-        returns (string memory)
-    {
-        return super.tokenURI(tokenId);
+        return (tokenCount);
     }
 
-    function supportsInterface(bytes4 interfaceId)
-        public
-        view
-        override(ERC721, ERC721URIStorage)
-        returns (bool)
-    {
-        return super.supportsInterface(interfaceId);
+    function getUserNFTsImages(address a) public view returns(uint[] memory) {
+        uint[] memory userNFTs = new uint[](balanceOf(a));
+        uint index = 0;
+        for (uint i = 1; i <= tokenCount; i++) {
+            if (ownerOf(i) == a) {
+                userNFTs[index] = i;
+                index++;
+            }
+        }
+        return userNFTs;
     }
 }
