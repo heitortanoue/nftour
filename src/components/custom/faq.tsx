@@ -4,7 +4,7 @@ import { PlusIcon } from 'lucide-react';
 
 const QandA = [
 	{
-		question: 'How do I start using NFTur?',
+		question: 'How do I start using NFTour?',
 		answer: 'Simply sign up for an account and start exploring with our digital wallet.'
 	},
 	{
@@ -12,12 +12,12 @@ const QandA = [
 		answer: 'Yes, you can trade your NFTs on our decentralized marketplace.'
 	},
 	{
-		question: 'Are there any fees for using NFTur?',
-		answer: 'NFTur charges a minimal transaction fee for trading on our platform.'
+		question: 'Are there any fees for using NFTour?',
+		answer: 'NFTour charges a minimal transaction fee for trading on our platform.'
 	},
 	{
-		question: 'How secure is NFTur?',
-		answer: 'NFTur employs state-of-the-art blockchain technology to ensure the security of your NFTs and transactions.'
+		question: 'How secure is NFTour?',
+		answer: 'NFTour employs state-of-the-art blockchain technology to ensure the security of your NFTs and transactions.'
 	}
 ];
 

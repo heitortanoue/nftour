@@ -28,11 +28,11 @@ export default function Layout() {
 								<About />
 							</Section>
 							<Section colors={{ bg: 'black', text: 'white' }} id="steps">
-								<Section.Title>How NFTur Works</Section.Title>
+								<Section.Title>How NFTour Works</Section.Title>
 								<Steps />
 							</Section>
 							<Section id="features">
-								<Section.Title>Why Choose NFTur?</Section.Title>
+								<Section.Title>Why Choose NFTour?</Section.Title>
 								<Features />
 							</Section>
 							<Section id="faq">

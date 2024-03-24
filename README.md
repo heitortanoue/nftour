@@ -1,40 +1,50 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# NFTour
 
-## Getting Started
+## Descrição
 
-First, run the development server:
+NFTour é um dApp revolucionário que transforma a exploração de novos lugares em uma emocionante caça ao tesouro digital. Utilizando a tecnologia blockchain, os usuários podem descobrir e capturar NFTs únicos em localidades específicas ao redor do mundo. Cada NFT capturado premia o usuário com tokens NFTour, que podem ser utilizados para adquirir cupons exclusivos em nossa plataforma. Estes cupons oferecem desde descontos especiais em parcerias locais até acesso a eventos únicos, tornando cada viagem uma aventura inesquecível. Tecnologia implementada na rede Scroll Sepolia.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+### Funcionalidades Principais
+
+-   **Exploração Baseada em Localização**: Explore o mundo real em busca de NFTs escondidos em localidades específicas, utilizando a tecnologia de geolocalização.
+-   **Coleção de NFTs**: Adicione NFTs exclusivos à sua coleção digital, cada um com sua própria raridade e design inspirado na cultura e paisagem local.
+-   **Ganho de Tokens NFTour**: Ganhe tokens NFTour por cada NFT capturado, que podem ser usados para desbloquear recompensas e experiências exclusivas.
+-   **Mercado de Cupons**: Utilize seus tokens para adquirir cupons exclusivos na plataforma, oferecendo uma ampla gama de vantagens e experiências locais.
+
+## Começando
+
+Para embarcar em sua aventura com NFTour, siga os passos abaixo:
+
+1. **Instale o NFTour**: Baixe o aplicativo em seu dispositivo móvel.
+2. **Comece a Explorar**: Ative a localização e comece a explorar o mapa em busca de NFTs.
+3. **Recolha e Gaste seus Tokens**: Use seus tokens NFTour ganhos para comprar cupons e desfrutar de experiências únicas.
+
+## Tecnologia
+
+NFTour é construído na tecnologia blockchain, garantindo uma experiência segura e transparente para todos os usuários. Com o uso de contratos inteligentes, gerenciamos todas as interações no dApp de forma eficiente, incluindo a descoberta de NFTs, atribuição de tokens e transações no mercado de cupons.
+
+## Contribua
+
+Suas contribuições são essenciais para tornar NFTour ainda melhor. Siga os passos abaixo para contribuir:
+
+1. Faça um Fork do projeto.
+2. Crie seu Branch de Funcionalidades (`git checkout -b feature/AmazingFeature`).
+3. Commit suas mudanças (`git commit -m 'Add some AmazingFeature'`).
+4. Push para o Branch (`git push origin feature/AmazingFeature`).
+5. Abra um Pull Request.
+
+## Licença
+
+Distribuído sob a Licença MIT. Veja `LICENSE` para mais informações.
+
+## Contratos SCROLL
+
+```javascript
+export const CONTRACTS = {
+	NFT: '0xd599d9140189AF03e86FC61Cfa3Dc26Db9B6C647',
+	TOKEN: '0xB7e3f2644e6703c8c0B2832265748A05893d5a17'
+};
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
-
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
-
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
-
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+- https://sepolia.scrollscan.dev/address/0xd599d9140189AF03e86FC61Cfa3Dc26Db9B6C647
+- https://sepolia.scrollscan.dev/address/0xB7e3f2644e6703c8c0B2832265748A05893d5a17
